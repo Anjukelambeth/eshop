@@ -1,0 +1,63 @@
+{% load socialaccount %}
+{% load mathfilters%}
+{% load static %}
+<!doctype html>
+<html class="no-js" lang="zxx">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>TimeCart</title>
+   
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'img/favicon.ico' %}">
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+
+    <!-- CSS here -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/flaticon.css' %}">
+    <link rel="stylesheet" href="{% static 'css/slicknav.css' %}">
+    <link rel="stylesheet" href="{% static 'css/animate.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
+    <link rel="stylesheet" href="{% static 'css/fontawesome-all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/themify-icons.css' %}">
+    <link rel="stylesheet" href="{% static 'css/slick.css' %}">
+    <link rel="stylesheet" href="{% static 'css/nice-select.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<div class="footer-logo">
+    <a href="index.html"><img src="{% static 'img/logo/logo2.jpg' %}" alt=""></a>
+</div>
+{% block content%}
+
+<div class="container-fluid " style="display:flex ;justify-content: space-around; text-align: center; align-items: end">
+    <a href="#"  style="color: blue">
+        Watches
+    </a>
+{% if user.is_authenticated %}
+
+  <a href="#" >
+    <i class="fas fa-shopping-cart text-primary"></i>
+    <span class="badge badge-pill badge-danger notify ">{{cart_count}}</span>
+</a>
+
+ <a class="nav-link " href="/signout" style="color: blue;"><i class="fa fa-sign-out-alt"></i>LOGOUT</a>
+
+
+
+{% else %}
+<button><a href="{% provider_login_url 'google' %}" style="color: blue;">Continue With Google</a> </button>
+{% endif %}
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <h5>Payment success, Your product will be delivered on 30 April 2022</h5>
+        </div>
+    </div>
+</div>
+
+{% endblock%}
